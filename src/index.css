@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kaar-e-Kamal Welfare Foundation Design System
+Gold Primary: rgb(248, 219, 105) -> HSL(45, 90%, 69%)
+Black Secondary: rgb(0, 0, 0) -> HSL(0, 0%, 0%)
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Foundation Brand Colors */
+    --gold: 45 90% 69%;          /* rgb(248, 219, 105) - Primary brand gold */
+    --gold-light: 45 95% 80%;    /* Lighter gold for highlights */
+    --gold-dark: 45 85% 55%;     /* Darker gold for accents */
+    --black: 0 0% 0%;            /* Pure black for text and backgrounds */
+    --white: 0 0% 100%;          /* Pure white for contrast */
+    
+    /* Semantic Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    
+    --primary: 45 90% 69%;       /* Gold primary */
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 0 0% 0%;        /* Black secondary */
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 45 90% 69%;
+    --accent-foreground: 0 0% 0%;
+    
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 45 90% 69%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 0.5rem;
+    
+    /* Custom Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--black)), hsl(0 0% 10%));
+    --gradient-section: linear-gradient(180deg, hsl(var(--white)), hsl(0 0% 98%));
+    
+    /* Shadows */
+    --shadow-gold: 0 10px 30px -10px hsl(var(--gold) / 0.3);
+    --shadow-elegant: 0 20px 60px -10px hsl(0 0% 0% / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep gold theme consistent in dark mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 45 90% 69%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 45 90% 69%;
+    --accent-foreground: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+  
+  /* Custom Button Variants */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline-hero {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground;
+    transition: var(--transition-smooth);
+  }
+  
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-delay-1 {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .scale-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .scale-hover:hover {
+    transform: scale(1.05);
+  }
+  
+  .gold-underline {
+    position: relative;
+  }
+  
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+  }
+  
+  /* Counter Animation */
+  .counter {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+  
+  /* Scroll Effects */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
